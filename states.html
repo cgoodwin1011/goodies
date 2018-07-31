@@ -14,10 +14,12 @@
       // for (state of USAStates) {
       //  menuItems += (`<option value="${state.abbr}">${state.state}</option>`)
       // }
+      
       // Pre-ES6 code (comment out this code if using ES6)
       for (i=0; i < USAStates.length; i++){
-        menuItems += ("<option value='"+ USAStates[i].abbr+"'>" + USAStates[i].state + "</option>")
+        menuItems += ("<option value='"+ USAStates[i].abbr+"' index=" + i + ">" + USAStates[i].state + "</option>")
       }
+
       document.getElementById(menuName).innerHTML=menuItems;
     }
   </script>
