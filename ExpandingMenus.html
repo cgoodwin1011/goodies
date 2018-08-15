@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* clear link styling */
+    a:link {
+      text-decoration: inherit;
+      color: inherit;
+      cursor: auto;
+    }
+
+    a:visited {
+      text-decoration: inherit;
+      color: inherit;
+      cursor: auto;
+    }
+
+    /* style overall menu */
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      vertical-align: middle;
+      /* border-top: 1px black solid; */
+      /* border-bottom: 1px black solid; */
+      font-size: 0.8em;
+      /* vertical-align: text-center; */
+    }
+
+    /* style menu items */
+    li {
+      /* display: inline-block; */
+      display: block;
+      float: left;
+      padding: 5px;
+      margin: 0px;
+      overflow: visible;
+      vertical-align: middle;
+      text-align: center;
+      transition-property: font-size;
+      transition-duration: 0.1s;
+      /* border: 1px black solid; */
+    }
+  </style>
+
+</head>
+
+<body>
+  <ul id="theMenu">
+    <li id="menuItem0" class="dock-menu" onmouseenter="handleMouseEnter(event)" onmouseleave="handleMouseExit(event)">
+      <a href="#">one</a>
+    </li>
+    <li id="menuItem1" class="dock-menu" onmouseenter="handleMouseEnter(event)" onmouseleave="handleMouseExit(event)">
+      <a href="#">two</a>
+    </li>
+    <li id="menuItem2" class="dock-menu" onmouseenter="handleMouseEnter(event)" onmouseleave="handleMouseExit(event)">
+      <a href="#">three</a>
+    </li>
+    <li id="menuItem3" class="dock-menu" onmouseenter="handleMouseEnter(event)" onmouseleave="handleMouseExit(event)">
+      <a href="#">four</a>
+    </li>
+    <li id="menuItem4" class="dock-menu" onmouseenter="handleMouseEnter(event)" onmouseleave="handleMouseExit(event)">
+      <a href="#">five</a>
+    </li>
+    <li id="menuItem5" class="dock-menu" onmouseenter="handleMouseEnter(event)" onmouseleave="handleMouseExit(event)">
+      <a href="#">six</a>
+    </li>
+    <li id="menuItem6" class="dock-menu" onmouseenter="handleMouseEnter(event)" onmouseleave="handleMouseExit(event)">
+      <a href="#">seven</a>
+    </li>
+  </ul>
+  <script>
+
+    function handleMouseEnter(evt) {
+      var here = evt.target.id;
+      var hereNow = document.getElementById(here)
+
+      // Set previous elements
+      if (document.getElementById(here).previousSibling.previousElementSibling != null) {
+        var before = document.getElementById(here).previousSibling.previousElementSibling;
+        if (before.previousElementSibling != null) {
+          var beforeBefore = before.previousElementSibling;
+        } else {
+          var beforeBefore = null;
+        }
+      } else {
+        var before = null;
+      }
+
+      // Set coming elements
+      if (document.getElementById(here).nextSibling.nextElementSibling != null) {
+        var after = document.getElementById(here).nextSibling.nextElementSibling;
+        if (after.nextElementSibling != null) {
+          var afterAfter = after.nextElementSibling;
+        } else {
+          var afterAfter = null;
+        }
+      } else {
+        var after = null;
+      }
+
+      hereNow.style.fontSize = "200%";
+      if (after != null) { after.style.fontSize = "150%"; }
+      if (afterAfter != null) { afterAfter.style.fontSize = "120%"; }
+      if (before != null) { before.style.fontSize = "150%"; }
+      if (beforeBefore != null) {
+        beforeBefore.style.fontSize = "120%";
+      }
+    }
+
+    function handleMouseExit(evt) {
+      var here = evt.target.id;
+      var hereNow = document.getElementById(here)
+
+      // Set previous elements
+      if (document.getElementById(here).previousSibling.previousElementSibling != null) {
+        var before = document.getElementById(here).previousSibling.previousElementSibling;
+        if (before.previousElementSibling != null) {
+          var beforeBefore = before.previousElementSibling;
+        } else {
+          var beforeBefore = null;
+        }
+      } else {
+        var before = null;
+      }
+      
+      if (document.getElementById(here).nextSibling.nextElementSibling != null) {
+        var after = document.getElementById(here).nextSibling.nextElementSibling;
+        if (after.nextElementSibling != null) {
+          var afterAfter = after.nextElementSibling;
+        } else {
+          var afterAfter = null;
+        }
+      } else {
+        var after = null;
+      }
+
+      hereNow.style.fontSize = "100%";
+      if (after) { after.style.fontSize = "100%"; }
+      if (afterAfter) { afterAfter.style.fontSize = "100%"; }
+      if (before) { before.style.fontSize = "100%";}
+      console.log("reset before ", before)
+      if (beforeBefore) { beforeBefore.style.fontSize = "100%"; }
+    }
+
+  </script>
+</body>
+
+</html>
